@@ -1,0 +1,77 @@
+{
+  "name": "api-test-coverage",
+  "displayName": "API Test Coverage",
+  "description": "AI-powered extension to generate test cases for your APIs. Scans codebase or specified path, detects language, follows testing conventions, and shows summary in a separate window.",
+  "version": "1.0.0",
+  "publisher": "api-test-coverage",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other",
+    "Testing"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "apiTestCoverage.generateTests",
+        "title": "Generate API Test Cases",
+        "icon": "$(beaker)"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "apiTestCoverage.generateTests",
+          "when": "explorerResourceIsFolder",
+          "group": "navigation"
+        },
+        {
+          "command": "apiTestCoverage.generateTests",
+          "when": "explorerResourceIsFile",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "API Test Coverage",
+      "properties": {
+        "apiTestCoverage.apiUrl": {
+          "type": "string",
+          "default": "http://localhost:3333",
+          "description": "Base URL of the API Test Coverage backend (e.g. http://localhost:3333)"
+        },
+        "apiTestCoverage.agentId": {
+          "type": "string",
+          "default": "69b1c1bdc6b88ef89da98ec4",
+          "description": "Lyzr agent ID for test generation"
+        },
+        "apiTestCoverage.maxFileSizeKb": {
+          "type": "number",
+          "default": 1024,
+          "description": "Max file size (KB) to include. Larger files are truncated."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.74.0",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.2.0",
+    "typescript": "^5.3.0",
+    "@vscode/vsce": "^2.22.0"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "agent_name": "Test Suite Orchestrator",
+  "agent_id": "69b1c1bdc6b88ef89da98ec4",
+  "description": "Coordinates the end-to-end workflow: routes codebase to discovery, language detection, and test generation sub-agents, then aggregates all generated test files into a unified output",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "summary": "string",
+    "language": "string",
+    "framework": "string",
+    "testingFramework": "string",
+    "totalEndpoints": "number",
+    "totalTestCases": "number",
+    "endpoints": [
+      {
+        "path": "string",
+        "method": "string",
+        "description": "string",
+        "testDimensions": {
+          "unitTests": "string",
+          "integrationTests": "string",
+          "contractTests": "string",
+          "edgeCaseTests": "string",
+          "performanceTests": "string",
+          "securityTests": "string"
+        }
+      }
+    ],
+    "coverageBreakdown": {
+      "unit": "number",
+      "integration": "number",
+      "contract": "number",
+      "edgeCases": "number",
+      "performance": "number",
+      "security": "number"
+    },
+    "warnings": [
+      "string"
+    ]
+  },
+  "example_response": {
+    "summary": "sample string",
+    "language": "sample string",
+    "framework": "sample string",
+    "testingFramework": "sample string",
+    "totalEndpoints": 0,
+    "totalTestCases": 0,
+    "endpoints": [
+      {
+        "path": "sample string",
+        "method": "sample string",
+        "description": "sample string",
+        "testDimensions": {
+          "unitTests": "sample string",
+          "integrationTests": "sample string",
+          "contractTests": "sample string",
+          "edgeCaseTests": "sample string",
+          "performanceTests": "sample string",
+          "securityTests": "sample string"
+        }
+      }
+    ],
+    "coverageBreakdown": {
+      "unit": 0,
+      "integration": 0,
+      "contract": 0,
+      "edgeCases": 0,
+      "performance": 0,
+      "security": 0
+    },
+    "warnings": [
+      "sample string"
+    ]
+  },
+  "has_module_outputs": true,
+  "module_outputs_example": {
+    "artifact_files": [
+      {
+        "file_url": "https://example.com/file.pdf"
+      }
+    ]
+  }
+}

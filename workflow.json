@@ -1,0 +1,79 @@
+{
+  "workflow_name": "API Test Coverage Agent",
+  "description": "AI-powered API test suite generation with multi-agent orchestration across 6 testing dimensions",
+  "nodes": [
+    {
+      "id": "input_node",
+      "type": "Input",
+      "label": "User Codebase Upload",
+      "nodeCategory": "input"
+    },
+    {
+      "id": "manager_agent",
+      "type": "Agent",
+      "label": "Test Suite Orchestrator",
+      "nodeCategory": "agent",
+      "agent_id": "69b1c1bdc6b88ef89da98ec4",
+      "config": {
+        "provider": "OpenAI",
+        "model": "gpt-4.1",
+        "temperature": 0.3,
+        "top_p": 1,
+        "file_output": true,
+        "is_manager": true
+      }
+    },
+    {
+      "id": "api_discovery_agent",
+      "type": "Agent",
+      "label": "API Discovery Agent",
+      "nodeCategory": "agent",
+      "agent_id": "69b1c1a5c6b88ef89da98ec2",
+      "config": {
+        "provider": "Anthropic",
+        "model": "claude-sonnet-4-6",
+        "temperature": 0.2,
+        "top_p": 1
+      }
+    },
+    {
+      "id": "language_agent",
+      "type": "Agent",
+      "label": "Language & Best Practices Agent",
+      "nodeCategory": "agent",
+      "agent_id": "69b1c1a5a42dc03f253953e1",
+      "config": {
+        "provider": "Anthropic",
+        "model": "claude-sonnet-4-6",
+        "temperature": 0.2,
+        "top_p": 1
+      }
+    },
+    {
+      "id": "test_generator_agent",
+      "type": "Agent",
+      "label": "Test Case Generator Agent",
+      "nodeCategory": "agent",
+      "agent_id": "69b1c1a5d41d186a1e03fe27",
+      "config": {
+        "provider": "OpenAI",
+        "model": "gpt-4.1",
+        "temperature": 0.4,
+        "top_p": 0.95
+      }
+    },
+    {
+      "id": "output_node",
+      "type": "Output",
+      "label": "Test Suite Output",
+      "nodeCategory": "end"
+    }
+  ],
+  "edges": [
+    {"source": "input_node", "target": "manager_agent"},
+    {"source": "manager_agent", "target": "api_discovery_agent"},
+    {"source": "manager_agent", "target": "language_agent"},
+    {"source": "manager_agent", "target": "test_generator_agent"},
+    {"source": "manager_agent", "target": "output_node"}
+  ]
+}

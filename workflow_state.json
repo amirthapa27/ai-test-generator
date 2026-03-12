@@ -1,0 +1,56 @@
+{
+  "workflow": "API Test Coverage Agent",
+  "created_at": "2026-03-11",
+  "agents": {
+    "manager": {
+      "name": "Test Suite Orchestrator",
+      "agent_id": "69b1c1bdc6b88ef89da98ec4",
+      "type": "manager",
+      "provider": "OpenAI",
+      "model": "gpt-4.1",
+      "temperature": 0.3,
+      "top_p": 1,
+      "file_output": true,
+      "managed_agents": [
+        "69b1c1a5c6b88ef89da98ec2",
+        "69b1c1a5a42dc03f253953e1",
+        "69b1c1a5d41d186a1e03fe27"
+      ]
+    },
+    "sub_agents": [
+      {
+        "name": "API Discovery Agent",
+        "agent_id": "69b1c1a5c6b88ef89da98ec2",
+        "type": "sub-agent",
+        "provider": "Anthropic",
+        "model": "claude-sonnet-4-6",
+        "temperature": 0.2,
+        "top_p": 1
+      },
+      {
+        "name": "Language & Best Practices Agent",
+        "agent_id": "69b1c1a5a42dc03f253953e1",
+        "type": "sub-agent",
+        "provider": "Anthropic",
+        "model": "claude-sonnet-4-6",
+        "temperature": 0.2,
+        "top_p": 1
+      },
+      {
+        "name": "Test Case Generator Agent",
+        "agent_id": "69b1c1a5d41d186a1e03fe27",
+        "type": "sub-agent",
+        "provider": "OpenAI",
+        "model": "gpt-4.1",
+        "temperature": 0.4,
+        "top_p": 0.95
+      }
+    ]
+  },
+  "response_schemas": [
+    "response_schemas/api_discovery_agent_response.json",
+    "response_schemas/language_best_practices_agent_response.json",
+    "response_schemas/test_case_generator_agent_response.json",
+    "response_schemas/test_suite_orchestrator_response.json"
+  ]
+}

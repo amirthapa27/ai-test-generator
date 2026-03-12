@@ -1,0 +1,42 @@
+# Dependencies (installed via npm ci in builder)
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+.next
+out
+build
+*.tsbuildinfo
+
+# Git
+.git
+.gitignore
+
+# Environment (pass at runtime, never bake into image)
+.env
+.env.*
+!.env.example
+
+# VS Code extension (not part of backend image)
+extension
+
+# Testing
+coverage
+*.lcov
+
+# IDE & misc
+.idea
+.vscode
+.DS_Store
+*.pem
+
+# Docs and dev files
+*.md
+!README.md
+CLAUDE.md
+TASK_COMPLETED
+workflow.json
+workflow_state.json
+hooks
